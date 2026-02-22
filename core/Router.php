@@ -2,29 +2,31 @@
 
 namespace Core;
 
-// TODO: Add POST, DELETE, PATCH. Accept contollers instead of views.
+// TODO: Add POST, DELETE, PATCH
 class Router
 {
     private $routes = [];
 
-    private function add($method, $uri, $view)
+    private function add($method, $uri, $controller)
     {
-        $this->routes[$method][$uri] = $view;
+        $this->routes[$method][$uri] = $controller;
     }
 
-    public function get($uri, $view)
+    public function get($uri, $controller)
     {
-        $this->add('GET', $uri, $view);
+        $this->add('GET', $uri, $controller);
     }
 
     public function dispatch($method, $uri)
     {
-        $view = $this->routes[$method][$uri] ?? '404';
+        $controller = $this->routes[$method][$uri] ?? null;
 
-        if ($view === '404') {
+        if ($controller === null) {
             http_response_code(404);
+            require dirname(__DIR__) . "/views/404.view.php";
+            return;
         }
 
-        require dirname(__DIR__) . "/views/{$view}.view.php";
+        require dirname(__DIR__) . "/controllers/{$controller}.controller.php";
     }
 }
