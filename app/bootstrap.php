@@ -1,8 +1,12 @@
 <?php
 
 require dirname(__DIR__) . '/core/Router.php';
+require dirname(__DIR__) . '/core/Env.php';
 
 use Core\Router;
+use Core\Env;
+
+Env::load(dirname(__DIR__));
 
 $router = new Router();
 
