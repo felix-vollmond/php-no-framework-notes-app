@@ -4,10 +4,7 @@
     <title>Notes</title>
 </head>
 <body>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-    </nav>
+    <?php include __DIR__ . '/partials/nav.partial.php'; ?>
     <h1>Notes</h1>
 </body>
 </html>
