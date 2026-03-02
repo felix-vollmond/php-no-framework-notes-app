@@ -12,6 +12,9 @@ Env::load(dirname(__DIR__));
 
 $db = new Database(require(dirname(__DIR__) . '/config/database.php'));
 
+// Yes... Hardcoding the user identifier is stupid.
+$userId = 1;
+
 $router = new Router();
 
 $router->get('/', 'index');
