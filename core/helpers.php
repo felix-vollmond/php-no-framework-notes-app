@@ -24,3 +24,12 @@ if (!function_exists('base_path')) {
             BASE_PATH . DIRECTORY_SEPARATOR . $path;
     }
 }
+
+if (!function_exists('view')) {
+    function view($name, $data = [])
+    {
+        extract($data);
+        $name = str_replace('.', '/', $name);
+        include base_path("views/{$name}.view.php");
+    }
+}
