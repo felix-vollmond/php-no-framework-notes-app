@@ -27,6 +27,6 @@ class Router
             return;
         }
 
-        require dirname(__DIR__) . "/controllers/{$controller}.controller.php";
+        require dirname(__DIR__) . "/controllers/{$controller}.php";
     }
 }

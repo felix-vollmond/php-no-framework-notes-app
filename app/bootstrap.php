@@ -19,7 +19,7 @@ $router = new Router();
 
 $router->get('/', 'index');
 $router->get('/about', 'about');
-$router->get('/notes', 'notes');
+$router->get('/notes', 'notes/index');
 
 $uri = $_SERVER['REQUEST_URI'];
 
