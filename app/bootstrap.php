@@ -1,5 +1,7 @@
 <?php
 
+require dirname(__DIR__) . '/core/helpers.php';
+
 require dirname(__DIR__) . '/core/Router.php';
 require dirname(__DIR__) . '/core/Env.php';
 require dirname(__DIR__) . '/core/Database.php';
