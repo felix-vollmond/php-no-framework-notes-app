@@ -17,6 +17,21 @@ class Router
         $this->add('GET', $uri, $controller);
     }
 
+    public function post($uri, $controller)
+    {
+        $this->add('POST', $uri, $controller);
+    }
+
+    public function patch($uri, $controller)
+    {
+        $this->add('PATCH', $uri, $controller);
+    }
+
+    public function delete($uri, $controller)
+    {
+        $this->add('DELETE', $uri, $controller);
+    }
+
     public function dispatch($method, $uri)
     {
         $controller = $this->routes[$method][$uri] ?? null;
