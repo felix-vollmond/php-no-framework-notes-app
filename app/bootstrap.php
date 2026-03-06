@@ -2,17 +2,17 @@
 
 require dirname(__DIR__) . '/core/helpers.php';
 
-require dirname(__DIR__) . '/core/Router.php';
-require dirname(__DIR__) . '/core/Env.php';
-require dirname(__DIR__) . '/core/Database.php';
+require base_path('core/Router.php');
+require base_path('core/Env.php');
+require base_path('core/Database.php');
 
 use Core\Router;
 use Core\Env;
 use Core\Database;
 
-Env::load(dirname(__DIR__));
+Env::load(base_path());
 
-$db = new Database(require(dirname(__DIR__) . '/config/database.php'));
+$db = new Database(require(base_path('config/database.php')));
 
 // Yes... Hardcoding the user identifier is stupid.
 $userId = 1;
