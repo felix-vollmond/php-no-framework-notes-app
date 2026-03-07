@@ -21,7 +21,9 @@ $router = new Router();
 
 $router->get('/', 'index');
 $router->get('/about', 'about');
+
 $router->get('/notes', 'notes/index');
+$router->get('/note/edit', 'notes/edit');
 
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
