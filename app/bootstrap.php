@@ -20,15 +20,8 @@ App::$database = new Database(require(base_path('config/database.php')));
 App::$router = new Router();
 App::$currentUserId = 1;
 
-$router = App::$router;
-
-$router->get('/', 'index');
-$router->get('/about', 'about');
-
-$router->get('/notes', 'notes/index');
-$router->get('/note/edit', 'notes/edit');
-
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
-$router->dispatch($method, $uri);
+require base_path('app/routes.php');
+App::$router->dispatch($method, $uri);
