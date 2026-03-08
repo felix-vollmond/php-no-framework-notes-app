@@ -1,7 +1,9 @@
 <?php
 
-// GLOBALS? O_o
-global $db, $userId;
+use App\App;
+
+$db = App::$database;
+$userId = App::$currentUserId;
 
 if (!isset($_GET['id'])) {
     http_response_code(404);

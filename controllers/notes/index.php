@@ -1,7 +1,9 @@
 <?php
 
-// GLOBALS? O_o
-global $db, $userId;
+use App\App;
+
+$db = App::$database;
+$userId = App::$currentUserId;
 
 $notes = $db->query('SELECT * FROM notes WHERE user_id = ?', [$userId])->fetchAll();
 

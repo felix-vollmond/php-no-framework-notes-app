@@ -12,14 +12,15 @@ use Core\Router;
 use Core\Env;
 use Core\Database;
 
+use App\App;
+
 Env::load(base_path());
 
-$db = new Database(require(base_path('config/database.php')));
+App::$database = new Database(require(base_path('config/database.php')));
+App::$router = new Router();
+App::$currentUserId = 1;
 
-// Yes... Hardcoding the user identifier is stupid.
-$userId = 1;
-
-$router = new Router();
+$router = App::$router;
 
 $router->get('/', 'index');
 $router->get('/about', 'about');

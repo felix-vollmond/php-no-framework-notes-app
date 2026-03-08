@@ -1,7 +1,9 @@
 <?php
 
-// GLOBALS? O_o
-global $db, $userId;
+use App\App;
+
+$db = App::$database;
+$userId = App::$currentUserId;
 
 $user = $db->query("SELECT * FROM users WHERE id = {$userId}")->fetch();
 $user = $user['name'] ?? 'Guest';
