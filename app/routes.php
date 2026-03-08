@@ -7,3 +7,4 @@ App::$router->get('/about', 'about');
 
 App::$router->get('/notes', 'notes/index');
 App::$router->get('/note/edit', 'notes/edit');
+App::$router->patch('/note', 'notes/update');
