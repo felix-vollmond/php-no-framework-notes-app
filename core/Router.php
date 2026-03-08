@@ -2,7 +2,6 @@
 
 namespace Core;
 
-// TODO: Add POST, DELETE, PATCH
 class Router
 {
     private $routes = [];
@@ -38,7 +37,7 @@ class Router
 
         if ($controller === null) {
             http_response_code(404);
-            require dirname(__DIR__) . "/views/404.view.php";
+            view('404');
             return;
         }
 
