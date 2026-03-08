@@ -1,10 +1,12 @@
 <?php
 
 require dirname(__DIR__) . '/core/helpers.php';
+require dirname(__DIR__) . '/core/autoload.php';
 
-require base_path('core/Router.php');
-require base_path('core/Env.php');
-require base_path('core/Database.php');
+autoload_register([
+    'App\\' => 'app/',
+    'Core\\' => 'core/',
+]);
 
 use Core\Router;
 use Core\Env;
