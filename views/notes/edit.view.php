@@ -12,6 +12,11 @@
         <textarea name="body"><?= htmlentities($note['body']) ?></textarea>
         <input type="submit" value="Save">
     </form>
+    <form action="/note" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="id" value="<?= $note['id'] ?>">
+        <input type="submit" value="Delete">
+    </form>
     <a href="/notes">Back</a>
 </body>
 </html>
