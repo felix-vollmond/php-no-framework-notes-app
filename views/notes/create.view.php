@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notes</title>
+</head>
+<body>
+    <?php include dirname(__DIR__) . '/partials/nav.partial.php'; ?>
+    <h1>Create Note</h1>
+    <form action="/notes" method="POST">
+        <textarea name="body"></textarea>
+        <input type="submit" value="Create">
+    </form>
+    <a href="/notes">Back</a>
+</body>
+</html>
