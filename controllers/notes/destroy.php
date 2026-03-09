@@ -13,6 +13,4 @@ $db->query($query, [
     ':userId' => $userId,
 ]);
 
-header("Location: /notes");
-exit();
-
+redirect('/notes');

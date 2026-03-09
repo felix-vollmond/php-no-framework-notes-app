@@ -33,3 +33,20 @@ if (!function_exists('view')) {
         include base_path("views/{$name}.view.php");
     }
 }
+
+if (!function_exists('redirect')) {
+    function redirect($path)
+    {
+        header("Location: {$path}");
+        exit();
+    }
+}
+
+if (!function_exists('abort')) {
+    function abort($code = 404)
+    {
+        http_response_code($code);
+        view("{$code}");
+        exit();
+    }
+}

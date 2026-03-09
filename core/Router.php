@@ -36,9 +36,7 @@ class Router
         $controller = $this->routes[$method][$uri] ?? null;
 
         if ($controller === null) {
-            http_response_code(404);
-            view('404');
-            return;
+            abort();
         }
 
         require dirname(__DIR__) . "/controllers/{$controller}.php";

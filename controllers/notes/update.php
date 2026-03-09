@@ -15,5 +15,4 @@ $db->query($query, [
     ':userId' => $userId,
 ]);
 
-header("Location: {$_SERVER['HTTP_REFERER']}");
-exit();
+redirect($_SERVER['HTTP_REFERER']);
