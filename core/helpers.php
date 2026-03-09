@@ -34,6 +34,15 @@ if (!function_exists('view')) {
     }
 }
 
+if (!function_exists('partial')) {
+    function partial($name, $data = [])
+    {
+        extract($data);
+        $name = str_replace('.', '/', $name);
+        include base_path("views/partials/{$name}.partial.php");
+    }
+}
+
 if (!function_exists('redirect')) {
     function redirect($path)
     {

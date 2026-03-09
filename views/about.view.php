@@ -4,7 +4,7 @@
     <title>Notes</title>
 </head>
 <body>
-    <?php include __DIR__ . '/partials/nav.partial.php'; ?>
+    <?php partial('nav'); ?>
     <h1>About</h1>
 </body>
 </html>

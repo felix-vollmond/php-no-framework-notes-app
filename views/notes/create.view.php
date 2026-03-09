@@ -4,7 +4,7 @@
     <title>Notes</title>
 </head>
 <body>
-    <?php include dirname(__DIR__) . '/partials/nav.partial.php'; ?>
+    <?php partial('nav'); ?>
     <h1>Create Note</h1>
     <form action="/notes" method="POST">
         <textarea name="body"></textarea>

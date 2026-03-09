@@ -4,7 +4,7 @@
     <title>Notes</title>
 </head>
 <body>
-    <?php include dirname(__DIR__) . '/partials/nav.partial.php'; ?>
+    <?php partial('nav'); ?>
     <h1>Edit Note</h1>
     <form action="/note" method="POST">
         <input type="hidden" name="_method" value="PATCH">
