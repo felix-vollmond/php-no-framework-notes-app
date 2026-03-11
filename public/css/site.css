@@ -1,0 +1,87 @@
+@import url('fonts.css');
+
+/* Common */
+
+body {
+  margin: 0;
+  font-family: 'Commissioner', sans-serif;
+}
+
+main {
+  margin: 15px;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Navigation Bar */
+
+nav {
+  display: flex;
+  gap: 15px;
+  padding: 14px;
+  background-color: #333;
+}
+
+nav a {
+  font-size: 25px;
+  font-weight: 600;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  transition: background-color 0.25s ease-in-out;
+}
+
+nav a:hover {
+  background-color: #222;
+}
+
+/* Notes List */
+
+ul {
+  list-style-type: none;
+  line-height: 2.0;
+  margin-left: 35px;
+  margin-bottom: 30px;
+  padding: 0;
+  font-size: 20px;
+  font-weight: 200;
+}
+
+ul a {
+  color: black;
+}
+
+ul a:hover {
+  font-weight: 300;
+}
+
+/* Action Buttons */
+/* The submit buttons have not been styled yet. */
+
+main > a {
+  font-size: 18px;
+  font-weight: 600;
+  color: blue;
+}
+
+main > a:hover {
+  font-weight: 700;
+}
+
+/* Text Form */
+
+textarea {
+  display: block;
+  resize: none;
+  border: 1px solid;
+  border-radius: 15px;
+  padding: 10px;
+  font: 200 20px 'Commissioner', sans-serif;
+  line-height: 1.5;
+}
+
+textarea:focus {
+  outline: 1px solid black;
+}
