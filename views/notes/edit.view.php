@@ -7,14 +7,14 @@
         <input type="hidden" name="_method" value="PATCH">
         <input type="hidden" name="id" value="<?= $note['id'] ?>">
         <textarea name="body"><?= htmlentities($note['body']) ?></textarea>
-        <input type="submit" value="Save">
+        <input class="btn btn-primary" type="submit" value="Save">
     </form>
     <form action="/note" method="POST">
         <input type="hidden" name="_method" value="DELETE">
         <input type="hidden" name="id" value="<?= $note['id'] ?>">
-        <input type="submit" value="Delete">
+        <input class="btn btn-delete" type="submit" value="Delete">
     </form>
-    <a href="/notes">Back</a>
+    <a class="btn btn-back" href="/notes">Back</a>
 </main>
 
 <?php partial('footer'); ?>

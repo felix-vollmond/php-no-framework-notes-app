@@ -12,7 +12,7 @@
             </li>
         <?php endforeach; ?>
     </ul>
-    <a href="/notes/create">Create Note</a>
+    <a class="btn btn-primary" href="/notes/create">Create Note</a>
 </main>
 
 <?php partial('footer'); ?>

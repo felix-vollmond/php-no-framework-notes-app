@@ -58,7 +58,6 @@ ul a:hover {
 }
 
 /* Action Buttons */
-/* The submit buttons have not been styled yet. */
 
 main > a {
   font-size: 18px;
@@ -68,6 +67,37 @@ main > a {
 
 main > a:hover {
   font-weight: 700;
+}
+
+.btn {
+  background-color: var(--btn-bg-color);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn:hover {
+  background-color: var(--btn-bg-color-hover);
+}
+
+.btn-primary {
+  --btn-bg-color: rgb(123, 54, 203);
+  --btn-bg-color-hover: rgb(150, 98, 210);
+}
+
+.btn-back {
+  --btn-bg-color: rgb(108, 108, 108);
+  --btn-bg-color-hover: rgb(138, 138, 138);
+}
+
+.btn-delete {
+  --btn-bg-color: rgb(217, 82, 38);
+  --btn-bg-color-hover: rgb(221, 118, 84);
 }
 
 /* Text Form */
