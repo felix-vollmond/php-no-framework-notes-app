@@ -3,11 +3,11 @@
 
 <main>
     <h1>Edit Note</h1>
-    <div class="form-container">
+    <div class="note-container">
         <form id="edit-note-form" action="/note" method="POST">
             <input type="hidden" name="_method" value="PATCH">
             <input type="hidden" name="id" value="<?= $note['id'] ?>">
-            <textarea name="body" rows="7"><?= htmlentities($note['body']) ?></textarea>
+            <?php partial('note-textarea', ['body' => $note['body']]); ?>
         </form>
         <div class="action-bar">
             <a class="btn btn-back" href="/note?id=<?= $note['id'] ?>">Cancel</a>

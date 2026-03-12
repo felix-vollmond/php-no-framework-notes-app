@@ -3,7 +3,7 @@
 
 <main>
     <h1>Note</h1>
-    <div class="form-container">
+    <div class="note-container">
         <p class="note-text"><?= htmlentities($note['body']) ?></p>
         <div class="action-bar">
             <a class="btn btn-back" href="/notes">Back</a>

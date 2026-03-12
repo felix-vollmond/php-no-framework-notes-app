@@ -111,9 +111,9 @@ main > a:hover {
   justify-content: flex-end;
 }
 
-/* Text Form */
+/* Note Text */
 
-.form-container {
+.note-container {
   width: 60%;
 }
 

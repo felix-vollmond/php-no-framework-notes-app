@@ -3,9 +3,9 @@
 
 <main>
     <h1>Create Note</h1>
-    <div class="form-container">
+    <div class="note-container">
         <form id="create-note-form" action="/notes" method="POST">
-            <textarea name="body" rows="7"></textarea>
+            <?php partial('note-textarea'); ?>
         </form>
         <div class="action-bar">
             <a class="btn btn-back" href="/notes">Back</a>
