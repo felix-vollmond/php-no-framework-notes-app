@@ -2,6 +2,10 @@
 
 /* Common */
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: 'Commissioner', sans-serif;
@@ -100,7 +104,18 @@ main > a:hover {
   --btn-bg-color-hover: rgb(221, 118, 84);
 }
 
+.action-bar {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+  justify-content: flex-end;
+}
+
 /* Text Form */
+
+.form-container {
+  width: 60%;
+}
 
 textarea {
   display: block;
@@ -110,6 +125,7 @@ textarea {
   padding: 10px;
   font: 200 20px 'Commissioner', sans-serif;
   line-height: 1.5;
+  width: 100%;
 }
 
 textarea:focus {

@@ -3,18 +3,22 @@
 
 <main>
     <h1>Edit Note</h1>
-    <form action="/note" method="POST">
-        <input type="hidden" name="_method" value="PATCH">
-        <input type="hidden" name="id" value="<?= $note['id'] ?>">
-        <textarea name="body"><?= htmlentities($note['body']) ?></textarea>
-        <input class="btn btn-primary" type="submit" value="Save">
-    </form>
-    <form action="/note" method="POST">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="hidden" name="id" value="<?= $note['id'] ?>">
-        <input class="btn btn-delete" type="submit" value="Delete">
-    </form>
-    <a class="btn btn-back" href="/notes">Back</a>
+    <div class="form-container">
+        <form id="edit-note-form" action="/note" method="POST">
+            <input type="hidden" name="_method" value="PATCH">
+            <input type="hidden" name="id" value="<?= $note['id'] ?>">
+            <textarea name="body" rows="7"><?= htmlentities($note['body']) ?></textarea>
+        </form>
+        <div class="action-bar">
+            <a class="btn btn-back" href="/notes">Back</a>
+            <form action="/note" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="id" value="<?= $note['id'] ?>">
+                <input class="btn btn-delete" type="submit" value="Delete">
+            </form>
+            <input class="btn btn-primary" form="edit-note-form" type="submit" value="Save">
+        </div>
+    </div>
 </main>
 
 <?php partial('footer'); ?>
