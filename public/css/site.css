@@ -131,3 +131,12 @@ textarea {
 textarea:focus {
   outline: 1px solid black;
 }
+
+.note-text {
+  background-color: rgb(232, 232, 232);
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 200;
+  font-size: 20px;
+  overflow-wrap: anywhere;
+}

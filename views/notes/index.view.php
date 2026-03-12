@@ -6,7 +6,7 @@
     <ul>
         <?php foreach ($notes as $note): ?>
             <li>
-                <a href="/note/edit?id=<?= $note['id'] ?>">
+                <a href="/note?id=<?= $note['id'] ?>">
                     <?= htmlentities($note['body']) ?>
                 </a>
             </li>

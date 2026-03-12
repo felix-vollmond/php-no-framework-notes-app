@@ -10,12 +10,7 @@
             <textarea name="body" rows="7"><?= htmlentities($note['body']) ?></textarea>
         </form>
         <div class="action-bar">
-            <a class="btn btn-back" href="/notes">Back</a>
-            <form action="/note" method="POST">
-                <input type="hidden" name="_method" value="DELETE">
-                <input type="hidden" name="id" value="<?= $note['id'] ?>">
-                <input class="btn btn-delete" type="submit" value="Delete">
-            </form>
+            <a class="btn btn-back" href="/note?id=<?= $note['id'] ?>">Cancel</a>
             <input class="btn btn-primary" form="edit-note-form" type="submit" value="Save">
         </div>
     </div>
