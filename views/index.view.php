@@ -3,7 +3,7 @@
 
 <main>
     <h1>Notes</h1>
-    <p>Welcome, <?= $user ?></p>
+    <p>Welcome, <?= e($user) ?></p>
 </main>
 
 <?php partial('footer'); ?>

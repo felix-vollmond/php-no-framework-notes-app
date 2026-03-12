@@ -1,1 +1,1 @@
-<textarea name="body" rows="7"><?= htmlentities($body ?? '') ?></textarea>
+<textarea name="body" rows="7"><?= e($body ?? '') ?></textarea>

@@ -6,8 +6,8 @@
     <ul>
         <?php foreach ($notes as $note): ?>
             <li>
-                <a href="/note?id=<?= $note['id'] ?>">
-                    <?= htmlentities($note['body']) ?>
+                <a href="/note?id=<?= e($note['id']) ?>">
+                    <?= e($note['body']) ?>
                 </a>
             </li>
         <?php endforeach; ?>
