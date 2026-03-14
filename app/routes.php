@@ -1,8 +1,8 @@
 <?php
 
 use App\App;
-use App\NotesController;
-use App\PagesController;
+use App\Controllers\NotesController;
+use App\Controllers\PagesController;
 
 App::$router->get('/', [PagesController::class, 'index']);
 App::$router->get('/about', [PagesController::class, 'about']);
