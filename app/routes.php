@@ -1,14 +1,16 @@
 <?php
 
 use App\App;
+use App\NotesController;
+use App\PagesController;
 
-App::$router->get('/', 'index');
-App::$router->get('/about', 'about');
+App::$router->get('/', [PagesController::class, 'index']);
+App::$router->get('/about', [PagesController::class, 'about']);
 
-App::$router->get('/notes', 'notes/index');
-App::$router->get('/note', 'notes/show');
-App::$router->get('/notes/create', 'notes/create');
-App::$router->post('/notes', 'notes/store');
-App::$router->get('/note/edit', 'notes/edit');
-App::$router->patch('/note', 'notes/update');
-App::$router->delete('/note', 'notes/destroy');
+App::$router->get('/notes', [NotesController::class, 'index']);
+App::$router->get('/note', [NotesController::class, 'show']);
+App::$router->get('/notes/create', [NotesController::class, 'create']);
+App::$router->post('/notes', [NotesController::class, 'store']);
+App::$router->get('/note/edit', [NotesController::class, 'edit']);
+App::$router->patch('/note', [NotesController::class, 'update']);
+App::$router->delete('/note', [NotesController::class, 'destroy']);

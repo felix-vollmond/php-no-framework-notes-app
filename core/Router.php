@@ -33,12 +33,19 @@ class Router
 
     public function dispatch($method, $uri)
     {
-        $controller = $this->routes[$method][$uri] ?? null;
+        $route = $this->routes[$method][$uri] ?? null;
 
-        if ($controller === null) {
+        if ($route === null) {
             abort();
         }
 
-        require dirname(__DIR__) . "/controllers/{$controller}.php";
+        [$class, $action] = $route;
+
+        if (!method_exists($class, $action)) {
+            abort();
+        }
+
+        $controller = new $class();
+        $controller->$action();
     }
 }
