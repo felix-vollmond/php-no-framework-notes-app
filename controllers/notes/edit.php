@@ -16,10 +16,6 @@ $query = 'SELECT * FROM notes WHERE id = :noteId AND user_id = :userId';
 $note = $db->query($query, [
     ':noteId' => $noteId,
     ':userId' => $userId,
-])->find();
-
-if ($note === false) {
-    abort();
-}
+])->findOrFail();
 
 view('notes.edit', ['note' => $note]);

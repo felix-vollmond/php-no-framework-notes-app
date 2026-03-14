@@ -43,6 +43,17 @@ class Database
         return $this->statement->fetchAll();
     }
 
+    public function findOrFail()
+    {
+        $result = $this->find();
+
+        if ($result === false) {
+            abort();
+        }
+
+        return $result;
+    }
+
     private static function buildDsn($config)
     {
         return sprintf(
