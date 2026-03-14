@@ -3,6 +3,7 @@
 namespace Core;
 
 use PDO;
+use PDOStatement;
 
 // I think for now I can just stick with ->query
 // But in the future I need to implement Model superclass
@@ -12,6 +13,7 @@ use PDO;
 class Database
 {
     private PDO $pdo;
+    private PDOStatement $statement;
 
     public function __construct($config)
     {
@@ -25,10 +27,20 @@ class Database
 
     public function query($query, $params = [])
     {
-        $statement = $this->pdo->prepare($query);
-        $statement->execute($params);
+        $this->statement = $this->pdo->prepare($query);
+        $this->statement->execute($params);
 
-        return $statement;
+        return $this;
+    }
+
+    public function find()
+    {
+        return $this->statement->fetch();
+    }
+
+    public function all()
+    {
+        return $this->statement->fetchAll();
     }
 
     private static function buildDsn($config)
