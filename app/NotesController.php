@@ -4,23 +4,31 @@ namespace App;
 
 use App\App;
 
+use Core\Database;
+
 class NotesController
 {
+    private Database $db;
+    private int $userId;
+
+    public function __construct()
+    {
+        $this->db = App::$database;
+        $this->userId = App::$currentUserId;
+    }
+
     public function index()
     {
-        $db = App::$database;
-        $userId = App::$currentUserId;
-
-        $notes = $db->query('SELECT * FROM notes WHERE user_id = ?', [$userId])->all();
+        $notes = $this->db->query(
+            'SELECT * FROM notes WHERE user_id = ?',
+            [$this->userId],
+        )->all();
 
         view('notes.index', ['notes' => $notes]);
     }
 
     public function show()
     {
-        $db = App::$database;
-        $userId = App::$currentUserId;
-
         if (!isset($_GET['id'])) {
             abort();
         }
@@ -29,9 +37,9 @@ class NotesController
 
         $query = 'SELECT * FROM notes WHERE id = :noteId AND user_id = :userId';
 
-        $note = $db->query($query, [
+        $note = $this->db->query($query, [
             ':noteId' => $noteId,
-            ':userId' => $userId,
+            ':userId' => $this->userId,
         ])->findOrFail();
 
         view('notes.show', ['note' => $note]);
@@ -39,9 +47,6 @@ class NotesController
 
     public function edit()
     {
-        $db = App::$database;
-        $userId = App::$currentUserId;
-
         if (!isset($_GET['id'])) {
             abort();
         }
@@ -50,9 +55,9 @@ class NotesController
 
         $query = 'SELECT * FROM notes WHERE id = :noteId AND user_id = :userId';
 
-        $note = $db->query($query, [
+        $note = $this->db->query($query, [
             ':noteId' => $noteId,
-            ':userId' => $userId,
+            ':userId' => $this->userId,
         ])->findOrFail();
 
         view('notes.edit', ['note' => $note]);
@@ -65,17 +70,15 @@ class NotesController
 
     public function update()
     {
-        $db = App::$database;
-        $userId = App::$currentUserId;
         $noteId = $_POST['id'] ?? null;
         $noteBody = $_POST['body'] ?? null;
 
         $query = 'UPDATE notes SET body = :noteBody WHERE id = :noteId AND user_id = :userId';
 
-        $db->query($query, [
+        $this->db->query($query, [
             ':noteBody' => $noteBody,
             ':noteId' => $noteId,
-            ':userId' => $userId,
+            ':userId' => $this->userId,
         ]);
 
         redirect($_SERVER['HTTP_REFERER']);
@@ -83,15 +86,13 @@ class NotesController
 
     public function store()
     {
-        $db = App::$database;
-        $userId = App::$currentUserId;
         $noteBody = $_POST['body'] ?? null;
 
         $query = 'INSERT INTO notes (body, user_id) VALUES (:noteBody, :userId)';
 
-        $db->query($query, [
+        $this->db->query($query, [
             ':noteBody' => $noteBody,
-            ':userId' => $userId,
+            ':userId' => $this->userId,
         ]);
 
         redirect('/notes');
@@ -99,15 +100,13 @@ class NotesController
 
     public function destroy()
     {
-        $db = App::$database;
-        $userId = App::$currentUserId;
         $noteId = $_POST['id'] ?? null;
 
         $query = 'DELETE FROM notes WHERE id = :noteId AND user_id = :userId';
 
-        $db->query($query, [
+        $this->db->query($query, [
             ':noteId' => $noteId,
-            ':userId' => $userId,
+            ':userId' => $this->userId,
         ]);
 
         redirect('/notes');
