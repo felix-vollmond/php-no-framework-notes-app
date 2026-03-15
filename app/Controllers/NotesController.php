@@ -81,7 +81,7 @@ class NotesController
             ':userId' => $this->userId,
         ]);
 
-        redirect($_SERVER['HTTP_REFERER']);
+        redirect("/note?id={$noteId}");
     }
 
     public function store()
