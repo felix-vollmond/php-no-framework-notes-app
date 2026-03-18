@@ -15,6 +15,10 @@ a {
   text-decoration: none;
 }
 
+ul {
+  list-style: none;
+}
+
 /* Content?? Should've come up with a more original name... */
 
 .content {
@@ -28,14 +32,19 @@ a {
 
 /* Navigation Bar */
 
-nav {
-  display: flex;
-  gap: 15px;
-  padding: 14px;
+.navbar {
   background-color: #333;
+  padding: 20px;
 }
 
-nav a {
+.navbar-list {
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-link {
   font-size: 25px;
   font-weight: 600;
   color: white;
@@ -44,14 +53,13 @@ nav a {
   transition: background-color 0.25s ease-in-out;
 }
 
-nav a:hover {
+.navbar-link:hover {
   background-color: #222;
 }
 
 /* Notes List */
 
-ul {
-  list-style-type: none;
+.notes-list {
   line-height: 2.0;
   margin-left: 35px;
   margin-bottom: 30px;
@@ -60,11 +68,11 @@ ul {
   font-weight: 200;
 }
 
-ul a {
+.notes-link {
   color: black;
 }
 
-ul a:hover {
+.notes-link:hover {
   font-weight: 300;
 }
 

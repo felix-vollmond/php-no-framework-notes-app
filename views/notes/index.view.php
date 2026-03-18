@@ -3,10 +3,10 @@
 
 <main class="content">
     <h1 class="content-title">Notes</h1>
-    <ul>
+    <ul class="notes-list">
         <?php foreach ($notes as $note): ?>
             <li>
-                <a href="/note?id=<?= e($note['id']) ?>">
+                <a class="notes-link" href="/note?id=<?= e($note['id']) ?>">
                     <?= e($note['body']) ?>
                 </a>
             </li>
