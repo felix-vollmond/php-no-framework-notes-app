@@ -7,8 +7,8 @@
         <form id="create-note-form" action="/notes" method="POST">
             <?php partial('note-textarea'); ?>
         </form>
-        <div class="action-bar">
-            <a class="btn btn-back" href="/notes">Back</a>
+        <div class="btn-container">
+            <a class="btn btn-secondary" href="/notes">Back</a>
             <input class="btn btn-primary" form="create-note-form" type="submit" value="Create">
         </div>
     </div>

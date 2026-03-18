@@ -9,8 +9,8 @@
             <input type="hidden" name="id" value="<?= e($note['id']) ?>">
             <?php partial('note-textarea', ['body' => $note['body']]); ?>
         </form>
-        <div class="action-bar">
-            <a class="btn btn-back" href="/note?id=<?= e($note['id']) ?>">Cancel</a>
+        <div class="btn-container">
+            <a class="btn btn-secondary" href="/note?id=<?= e($note['id']) ?>">Cancel</a>
             <input class="btn btn-primary" form="edit-note-form" type="submit" value="Save">
         </div>
     </div>

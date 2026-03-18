@@ -1,7 +1,5 @@
 @import url('fonts.css');
 
-/* Common */
-
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -19,8 +17,6 @@ ul {
   list-style: none;
 }
 
-/* Content?? Should've come up with a more original name... */
-
 .content {
   margin: 15px;
 }
@@ -29,8 +25,6 @@ ul {
   font-size: 32px;
   font-weight: 700;
 }
-
-/* Navigation Bar */
 
 .navbar {
   background-color: #333;
@@ -57,8 +51,6 @@ ul {
   background-color: #222;
 }
 
-/* Notes List */
-
 .notes-list {
   line-height: 2.0;
   margin-left: 35px;
@@ -76,16 +68,11 @@ ul {
   font-weight: 300;
 }
 
-/* Action Buttons */
-
-main > a {
-  font-size: 18px;
-  font-weight: 600;
-  color: blue;
-}
-
-main > a:hover {
-  font-weight: 700;
+.btn-container {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+  justify-content: flex-end;
 }
 
 .btn {
@@ -109,30 +96,21 @@ main > a:hover {
   --btn-bg-color-hover: rgb(150, 98, 210);
 }
 
-.btn-back {
+.btn-secondary {
   --btn-bg-color: rgb(108, 108, 108);
   --btn-bg-color-hover: rgb(138, 138, 138);
 }
 
-.btn-delete {
+.btn-danger {
   --btn-bg-color: rgb(217, 82, 38);
   --btn-bg-color-hover: rgb(221, 118, 84);
 }
-
-.action-bar {
-  display: flex;
-  gap: 15px;
-  margin-top: 10px;
-  justify-content: flex-end;
-}
-
-/* Note Text */
 
 .note-container {
   width: 60%;
 }
 
-textarea {
+.note-textbox {
   display: block;
   resize: none;
   border: 1px solid;
@@ -143,7 +121,7 @@ textarea {
   width: 100%;
 }
 
-textarea:focus {
+.note-textbox:focus {
   outline: 1px solid black;
 }
 
