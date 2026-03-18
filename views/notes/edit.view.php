@@ -1,8 +1,8 @@
 <?php partial('head'); ?>
 <?php partial('nav'); ?>
 
-<main>
-    <h1>Edit Note</h1>
+<main class="content">
+    <h1 class="content-title">Edit Note</h1>
     <div class="note-container">
         <form id="edit-note-form" action="/note" method="POST">
             <input type="hidden" name="_method" value="PATCH">

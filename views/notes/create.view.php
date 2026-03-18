@@ -1,8 +1,8 @@
 <?php partial('head'); ?>
 <?php partial('nav'); ?>
 
-<main>
-    <h1>Create Note</h1>
+<main class="content">
+    <h1 class="content-title">Create Note</h1>
     <div class="note-container">
         <form id="create-note-form" action="/notes" method="POST">
             <?php partial('note-textarea'); ?>

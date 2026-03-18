@@ -1,8 +1,8 @@
 <?php partial('head'); ?>
 <?php partial('nav'); ?>
 
-<main>
-    <h1>About</h1>
+<main class="content">
+    <h1 class="content-title">About</h1>
 </main>
 
 <?php partial('footer'); ?>

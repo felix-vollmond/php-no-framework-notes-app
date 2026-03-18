@@ -11,12 +11,19 @@ body {
   font-family: 'Commissioner', sans-serif;
 }
 
-main {
+a {
+  text-decoration: none;
+}
+
+/* Content?? Should've come up with a more original name... */
+
+.content {
   margin: 15px;
 }
 
-a {
-  text-decoration: none;
+.content-title {
+  font-size: 32px;
+  font-weight: 700;
 }
 
 /* Navigation Bar */

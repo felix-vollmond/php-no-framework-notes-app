@@ -1,8 +1,8 @@
 <?php partial('head'); ?>
 <?php partial('nav'); ?>
 
-<main>
-    <h1>Note</h1>
+<main class="content">
+    <h1 class="content-title">Note</h1>
     <div class="note-container">
         <p class="note-text"><?= e($note['body']) ?></p>
         <div class="action-bar">

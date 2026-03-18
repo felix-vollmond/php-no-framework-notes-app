@@ -1,8 +1,8 @@
 <?php partial('head'); ?>
 <?php partial('nav'); ?>
 
-<main>
-    <h1>Notes</h1>
+<main class="content">
+    <h1 class="content-title">Notes</h1>
     <p>Welcome, <?= e($user) ?></p>
 </main>
 
