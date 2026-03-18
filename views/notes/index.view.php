@@ -6,7 +6,7 @@
     <ul class="notes-list">
         <?php foreach ($notes as $note): ?>
             <li>
-                <a class="notes-link" href="/note?id=<?= e($note['id']) ?>">
+                <a class="notes-link" href="/notes/<?= e($note['id']) ?>">
                     <?= e($note['body']) ?>
                 </a>
             </li>

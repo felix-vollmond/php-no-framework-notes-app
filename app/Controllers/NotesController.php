@@ -27,14 +27,8 @@ class NotesController
         view('notes.index', ['notes' => $notes]);
     }
 
-    public function show()
+    public function show($noteId)
     {
-        if (!isset($_GET['id'])) {
-            abort();
-        }
-
-        $noteId = $_GET['id'];
-
         $query = 'SELECT * FROM notes WHERE id = :noteId AND user_id = :userId';
 
         $note = $this->db->query($query, [
@@ -45,14 +39,8 @@ class NotesController
         view('notes.show', ['note' => $note]);
     }
 
-    public function edit()
+    public function edit($noteId)
     {
-        if (!isset($_GET['id'])) {
-            abort();
-        }
-
-        $noteId = $_GET['id'];
-
         $query = 'SELECT * FROM notes WHERE id = :noteId AND user_id = :userId';
 
         $note = $this->db->query($query, [
@@ -68,9 +56,8 @@ class NotesController
         view('notes.create');
     }
 
-    public function update()
+    public function update($noteId)
     {
-        $noteId = $_POST['id'] ?? null;
         $noteBody = $_POST['body'] ?? null;
 
         $query = 'UPDATE notes SET body = :noteBody WHERE id = :noteId AND user_id = :userId';
@@ -81,7 +68,7 @@ class NotesController
             ':userId' => $this->userId,
         ]);
 
-        redirect("/note?id={$noteId}");
+        redirect("/notes/{$noteId}");
     }
 
     public function store()
@@ -98,10 +85,8 @@ class NotesController
         redirect('/notes');
     }
 
-    public function destroy()
+    public function destroy($noteId)
     {
-        $noteId = $_POST['id'] ?? null;
-
         $query = 'DELETE FROM notes WHERE id = :noteId AND user_id = :userId';
 
         $this->db->query($query, [

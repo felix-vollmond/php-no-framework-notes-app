@@ -7,12 +7,11 @@
         <p class="note-text"><?= e($note['body']) ?></p>
         <div class="btn-container">
             <a class="btn btn-secondary" href="/notes">Back</a>
-            <form action="/note" method="POST">
+            <form action="/notes/<?= e($note['id']) ?>" method="POST">
                 <input type="hidden" name="_method" value="DELETE">
-                <input type="hidden" name="id" value="<?= e($note['id']) ?>">
                 <input class="btn btn-danger" type="submit" value="Delete">
             </form>
-            <a class="btn btn-primary" href="/note/edit?id=<?= e($note['id']) ?>">Edit</a>
+            <a class="btn btn-primary" href="/notes/<?= e($note['id']) ?>/edit">Edit</a>
         </div>
     </div>
 </main>
