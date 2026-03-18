@@ -1,4 +1,4 @@
-<?php partial('head'); ?>
+<?php partial('head', ['title' => "Note #{$note['id']}"]); ?>
 <?php partial('nav'); ?>
 
 <main class="content">

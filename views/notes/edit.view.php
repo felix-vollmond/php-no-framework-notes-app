@@ -1,4 +1,4 @@
-<?php partial('head'); ?>
+<?php partial('head', ['title' => 'Edit Note']); ?>
 <?php partial('nav'); ?>
 
 <main class="content">

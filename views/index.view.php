@@ -1,4 +1,4 @@
-<?php partial('head'); ?>
+<?php partial('head', ['title' => 'Notes App']); ?>
 <?php partial('nav'); ?>
 
 <main class="content">
