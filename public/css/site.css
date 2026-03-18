@@ -40,11 +40,15 @@ ul {
 
 .navbar-link {
   font-size: 25px;
-  font-weight: 600;
+  font-weight: 500;
   color: white;
   padding: 10px 15px;
   border-radius: 10px;
   transition: background-color 0.25s ease-in-out;
+}
+
+.navbar-link-active {
+  font-weight: 800;
 }
 
 .navbar-link:hover {
