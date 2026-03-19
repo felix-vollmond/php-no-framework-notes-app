@@ -10,9 +10,7 @@ autoload_register([
 
 use Core\Application;
 
-$app = new Application(
-    services: require base_path('app/services.php'),
-    routes: require base_path('app/routes.php'),
+return new Application(
+    services: require base_path('bootstrap/services.php'),
+    routes: require base_path('bootstrap/routes.php'),
 );
-
-$app->handleRequest();

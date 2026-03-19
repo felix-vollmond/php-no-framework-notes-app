@@ -1,3 +1,5 @@
 <?php
 
-require dirname(__DIR__) . '/app/bootstrap.php';
+$app = require dirname(__DIR__) . '/bootstrap/app.php';
+
+$app->handleRequest();
