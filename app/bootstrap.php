@@ -10,39 +10,21 @@ autoload_register([
 
 use Core\Router;
 use Core\Env;
-use Core\Database;
 use Core\Container;
-
-use App\Controllers\{PagesController, NotesController};
 
 Env::load(base_path());
 
 $container = new Container();
-
-$container->set('currentUserId', fn($c) => 1);
-$container->set(
-    Database::class,
-    fn($c) => new Database(require(base_path('config/database.php'))),
-);
-$container->set(
-    NotesController::class,
-    fn($c) => new NotesController(
-        $c->get(Database::class),
-        $c->get('currentUserId'),
-    ),
-);
-$container->set(
-    PagesController::class,
-    fn($c) => new PagesController(
-        $c->get(Database::class),
-        $c->get('currentUserId'),
-    ),
-);
+$router = new Router($container);
 
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
-$router = new Router($container);
+$routes = require base_path('app/routes.php');
+$services = require base_path('app/services.php');
 
-require base_path('app/routes.php');
+// Register routes and services
+$routes($router);
+$services($container);
+
 $router->dispatch($method, $uri);
