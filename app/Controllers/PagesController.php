@@ -2,20 +2,14 @@
 
 namespace App\Controllers;
 
-use App\App;
-
 use Core\Database;
 
 class PagesController
 {
-    private Database $db;
-    private int $userId;
-
-    public function __construct()
-    {
-        $this->db = App::$database;
-        $this->userId = App::$currentUserId;
-    }
+    public function __construct(
+        private Database $db,
+        private int $userId,
+    ) {}
 
     public function index()
     {

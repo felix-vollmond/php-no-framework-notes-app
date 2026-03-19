@@ -2,11 +2,14 @@
 
 namespace Core;
 
+use Core\Container;
 use Core\RouteMatcher;
 
 class Router
 {
     private $routes = [];
+
+    public function __construct(private Container $container) {}
 
     private function add($method, $uri, $controller)
     {
@@ -41,14 +44,14 @@ class Router
             $params = $uriMatcher->match($pattern);
 
             if ($params !== false) {
-                return static::callAction($route, $params);
+                return $this->callAction($route, $params);
             }
         }
 
         abort();
     }
 
-    private static function callAction($route, $params)
+    private function callAction($route, $params)
     {
         [$class, $action] = $route;
 
@@ -56,7 +59,7 @@ class Router
             abort();
         }
 
-        $controller = new $class();
+        $controller = $this->container->get($class);
 
         return $controller->$action(...array_values($params));
     }
