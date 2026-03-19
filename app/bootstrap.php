@@ -8,23 +8,11 @@ autoload_register([
     'Core\\' => 'core/',
 ]);
 
-use Core\Router;
-use Core\Env;
-use Core\Container;
+use Core\Application;
 
-Env::load(base_path());
+$app = new Application(
+    services: require base_path('app/services.php'),
+    routes: require base_path('app/routes.php'),
+);
 
-$container = new Container();
-$router = new Router($container);
-
-$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
-$method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
-
-$routes = require base_path('app/routes.php');
-$services = require base_path('app/services.php');
-
-// Register routes and services
-$routes($router);
-$services($container);
-
-$router->dispatch($method, $uri);
+$app->handleRequest();

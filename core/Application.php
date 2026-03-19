@@ -1,0 +1,46 @@
+<?php
+
+namespace Core;
+
+use Core\Container;
+use Core\Env;
+use Core\Router;
+
+class Application
+{
+    private Container $container;
+    private Router $router;
+
+    public function __construct(
+        callable $services,
+        callable $routes,
+    ) {
+        Env::load(base_path());
+
+        $this->container = new Container();
+        $this->router = new Router($this->container);
+
+        $this->register($services, $routes);
+    }
+
+    public function handleRequest()
+    {
+        $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+        $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
+
+        return $this->router->dispatch($method, $uri);
+    }
+
+    public function getContainer(): Container
+    {
+        return $this->container;
+    }
+
+    private function register(
+        callable $registerServices,
+        callable $registerRoutes,
+    ) {
+        $registerServices($this->container);
+        $registerRoutes($this->router);
+    }
+}
