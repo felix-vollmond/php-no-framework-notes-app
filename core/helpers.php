@@ -16,6 +16,13 @@ if (!function_exists('dd')) {
     }
 }
 
+if (!function_exists('env')) {
+    function env($key, $default = null)
+    {
+        return $_ENV[$key] ?? $default;
+    }
+}
+
 if (!function_exists('base_path')) {
     function base_path($path = '')
     {
