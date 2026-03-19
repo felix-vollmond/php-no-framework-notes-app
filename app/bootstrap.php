@@ -13,14 +13,11 @@ use Core\Env;
 use Core\Database;
 use Core\Container;
 
-use App\App;
 use App\Controllers\{PagesController, NotesController};
 
 Env::load(base_path());
 
 $container = new Container();
-
-App::$router = new Router($container);
 
 $container->set('currentUserId', fn($c) => 1);
 $container->set(
@@ -45,5 +42,7 @@ $container->set(
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
+$router = new Router($container);
+
 require base_path('app/routes.php');
-App::$router->dispatch($method, $uri);
+$router->dispatch($method, $uri);
