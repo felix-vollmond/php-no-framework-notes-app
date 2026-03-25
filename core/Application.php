@@ -3,6 +3,7 @@
 namespace Core;
 
 use Core\Container;
+use Core\ControllerDispatcher;
 use Core\Env;
 use Core\Router;
 
@@ -18,7 +19,18 @@ class Application
         Env::load(base_path());
 
         $this->container = new Container();
-        $this->router = new Router($this->container);
+        $this->container->set(
+            ControllerDispatcher::class,
+            fn($c) => new ControllerDispatcher($c),
+        );
+        $this->container->set(
+            Router::class,
+            fn($c) => new Router(
+                $c->get(ControllerDispatcher::class),
+            ),
+        );
+
+        $this->router = $this->container->get(Router::class);
 
         $this->register($services, $routes);
     }

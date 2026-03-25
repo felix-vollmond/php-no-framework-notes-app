@@ -2,14 +2,14 @@
 
 namespace Core;
 
-use Core\Container;
+use Core\ControllerDispatcher;
 use Core\RouteMatcher;
 
 class Router
 {
     private $routes = [];
 
-    public function __construct(private Container $container) {}
+    public function __construct(private ControllerDispatcher $dispatcher) {}
 
     private function add($method, $uri, $controller)
     {
@@ -44,31 +44,10 @@ class Router
             $params = $uriMatcher->match($pattern);
 
             if ($params !== false) {
-                return $this->callAction($route, $params);
+                return $this->dispatcher->dispatch($route, $params);
             }
         }
 
         abort();
-    }
-
-    private function callAction($route, $params)
-    {
-        if (is_callable($route)) {
-            return $route(...array_values($params));
-        }
-
-        if (!is_array($route) || count($route) !== 2) {
-            abort();
-        }
-
-        [$class, $action] = $route;
-
-        if (!method_exists($class, $action)) {
-            abort();
-        }
-
-        $controller = $this->container->get($class);
-
-        return $controller->$action(...array_values($params));
     }
 }
