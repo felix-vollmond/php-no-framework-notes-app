@@ -53,6 +53,14 @@ class Router
 
     private function callAction($route, $params)
     {
+        if (is_callable($route)) {
+            return $route(...array_values($params));
+        }
+
+        if (!is_array($route) || count($route) !== 2) {
+            abort();
+        }
+
         [$class, $action] = $route;
 
         if (!method_exists($class, $action)) {
