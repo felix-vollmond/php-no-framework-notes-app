@@ -19,16 +19,7 @@ class Application
         Env::load(base_path());
 
         $this->container = new Container();
-        $this->container->set(
-            ControllerDispatcher::class,
-            fn($c) => new ControllerDispatcher($c),
-        );
-        $this->container->set(
-            Router::class,
-            fn($c) => new Router(
-                $c->get(ControllerDispatcher::class),
-            ),
-        );
+        $this->registerCoreServices();
 
         $this->router = $this->container->get(Router::class);
 
@@ -46,6 +37,18 @@ class Application
     public function getContainer(): Container
     {
         return $this->container;
+    }
+
+    private function registerCoreServices()
+    {
+        $this->container->set(
+            ControllerDispatcher::class,
+            fn($c) => new ControllerDispatcher($c),
+        );
+        $this->container->set(
+            Router::class,
+            fn($c) => new Router($c->get(ControllerDispatcher::class)),
+        );
     }
 
     private function register(
