@@ -2,11 +2,12 @@ DROP TABLE IF EXISTS notes;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
-    id    INT          NOT NULL AUTO_INCREMENT,
-    name  VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
-        PRIMARY KEY (id),
-        UNIQUE KEY  email (email)
+    id            INT          NOT NULL AUTO_INCREMENT,
+    name          VARCHAR(255) NOT NULL,
+    email         VARCHAR(255) NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+                  PRIMARY KEY (id),
+                  UNIQUE KEY  email (email)
 ) ENGINE=InnoDB
   DEFAULT CHARSET=utf8mb4
   COLLATE=utf8mb4_0900_ai_ci;
