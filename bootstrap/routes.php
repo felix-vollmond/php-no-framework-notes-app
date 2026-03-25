@@ -1,5 +1,6 @@
 <?php
 
+use App\Controllers\AuthController;
 use App\Controllers\NotesController;
 use App\Controllers\PagesController;
 
@@ -16,4 +17,7 @@ return function (Router $router) {
     $router->post('/notes', [NotesController::class, 'store']);
     $router->patch('/notes/{id}', [NotesController::class, 'update']);
     $router->delete('/notes/{id}', [NotesController::class, 'destroy']);
+
+    $router->get('/register', [AuthController::class, 'showRegisterForm']);
+    $router->post('/register', [AuthController::class, 'register']);
 };

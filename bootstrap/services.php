@@ -1,6 +1,6 @@
 <?php
 
-use App\Controllers\{NotesController, PagesController};
+use App\Controllers\{AuthController, NotesController, PagesController};
 
 use Core\Container;
 use Core\Database;
@@ -24,5 +24,9 @@ return function (Container $container) {
             $c->get(Database::class),
             $c->get('currentUserId'),
         ),
+    );
+    $container->set(
+        AuthController::class,
+        fn($c) => new AuthController(),
     );
 };

@@ -148,3 +148,57 @@ ul {
   font-size: 20px;
   overflow-wrap: anywhere;
 }
+
+/* I WILL REFACTOR THIS!!! */
+
+.content-centered {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 100px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 35%;
+  gap: 25px;
+  padding: 25px;
+  background-color: #DDD;
+  border-radius: 10px;
+}
+
+.auth-form-title {
+  margin: 0px;
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.auth-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #444;
+}
+
+.auth-form-field label {
+  font-size: 16px;
+  font-weight: 200;
+}
+
+.auth-form-field input {
+  padding: 8px;
+  font-size: 20px;
+  font-family: 'Commissioner';
+  font-weight: 300;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+}
+
+.auth-form button {
+  margin-top: 20px;
+}
