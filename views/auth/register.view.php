@@ -15,6 +15,11 @@
             <input id="password" type="password" name="password" required>
         </div>
 
+        <div class="auth-form-field">
+            <label for="name" class="register-form-field-label">Name</label>
+            <input id="name" type="text" name="name" required>
+        </div>
+
         <button class="btn btn-primary" type="submit">Register</button>
     </form>
 </main>
