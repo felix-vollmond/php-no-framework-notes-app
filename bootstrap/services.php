@@ -27,6 +27,6 @@ return function (Container $container) {
     );
     $container->set(
         AuthController::class,
-        fn($c) => new AuthController(),
+        fn($c) => new AuthController($c->get(Database::class)),
     );
 };
