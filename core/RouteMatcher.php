@@ -23,7 +23,7 @@ class RouteMatcher
 
         foreach ($patternParts as $i => $part) {
             if (static::isParam($part)) {
-                $params[] = $this->uriParts[$i];
+                $params[trim($part, '{}')] = $this->uriParts[$i];
                 continue;
             }
 

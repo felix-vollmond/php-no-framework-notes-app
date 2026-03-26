@@ -21,24 +21,24 @@ class NotesController
         view('notes.index', ['notes' => $notes]);
     }
 
-    public function show($noteId)
+    public function show($id)
     {
         $query = 'SELECT * FROM notes WHERE id = :noteId AND user_id = :userId';
 
         $note = $this->db->query($query, [
-            ':noteId' => $noteId,
+            ':noteId' => $id,
             ':userId' => $this->userId,
         ])->findOrFail();
 
         view('notes.show', ['note' => $note]);
     }
 
-    public function edit($noteId)
+    public function edit($id)
     {
         $query = 'SELECT * FROM notes WHERE id = :noteId AND user_id = :userId';
 
         $note = $this->db->query($query, [
-            ':noteId' => $noteId,
+            ':noteId' => $id,
             ':userId' => $this->userId,
         ])->findOrFail();
 
@@ -50,7 +50,7 @@ class NotesController
         view('notes.create');
     }
 
-    public function update($noteId)
+    public function update($id)
     {
         $noteBody = $_POST['body'] ?? null;
 
@@ -58,11 +58,11 @@ class NotesController
 
         $this->db->query($query, [
             ':noteBody' => $noteBody,
-            ':noteId' => $noteId,
+            ':noteId' => $id,
             ':userId' => $this->userId,
         ]);
 
-        redirect("/notes/{$noteId}");
+        redirect("/notes/{$id}");
     }
 
     public function store()
@@ -79,12 +79,12 @@ class NotesController
         redirect('/notes');
     }
 
-    public function destroy($noteId)
+    public function destroy($id)
     {
         $query = 'DELETE FROM notes WHERE id = :noteId AND user_id = :userId';
 
         $this->db->query($query, [
-            ':noteId' => $noteId,
+            ':noteId' => $id,
             ':userId' => $this->userId,
         ]);
 

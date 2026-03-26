@@ -4,6 +4,10 @@ namespace Core;
 
 use Core\Container;
 
+use Exception;
+use ReflectionFunction;
+use ReflectionMethod;
+
 class ControllerDispatcher
 {
     public function __construct(private Container $container) {}
@@ -11,7 +15,7 @@ class ControllerDispatcher
     public function dispatch($route, $params)
     {
         if (is_callable($route)) {
-            return $route(...array_values($params));
+            $this->invoke($route, $params);
         }
 
         if (!is_array($route) || count($route) !== 2) {
@@ -26,6 +30,31 @@ class ControllerDispatcher
 
         $controller = $this->container->get($class);
 
-        return $controller->$action(...array_values($params));
+        return $this->invoke([$controller, $action], $params);
+    }
+
+    // I could have made it static, but I didn't.
+    private function invoke($callable, $params)
+    {
+        if (is_array($callable) && count($callable) === 2) {
+            $reflection = new ReflectionMethod($callable[0], $callable[1]);
+        } else {
+            $reflection = new ReflectionFunction($callable);
+        }
+
+        $args = [];
+
+        foreach ($reflection->getParameters() as $parameter) {
+            $name = $parameter->getName();
+
+            if (array_key_exists($name, $params)) {
+                $args[] = $params[$name];
+                continue;
+            }
+
+            throw new Exception("Cannot resolve parameter '{$name}'");
+        }
+
+        return $callable(...$args);
     }
 }
