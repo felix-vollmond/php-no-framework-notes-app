@@ -3,6 +3,7 @@
 namespace Core;
 
 use Exception;
+use ReflectionClass;
 
 class Container
 {
@@ -15,15 +16,29 @@ class Container
 
     public function get($id)
     {
-        if (!$this->has($id)) {
-            throw new Exception("Unregistered service: {$id}");
-        }
-
-        return $this->objects[$id]($this);
+        return isset($this->objects[$id])
+            ? $this->objects[$id]($this)
+            : $this->make($id);
     }
 
-    public function has($id)
+    private function make($class)
     {
-        return isset($this->objects[$id]);
+        if (!class_exists($class)) {
+            return null;
+        }
+
+        $constructorArgs = (new ReflectionClass($class))
+            ->getConstructor()
+            ?->getParameters();
+
+        $args = [];
+
+        foreach ($constructorArgs ?? [] as $arg) {
+            $argType = $arg->getType()->getName();
+
+            $args[$arg->getName()] = $this->get($argType);
+        }
+
+        return new $class(...$args);
     }
 }

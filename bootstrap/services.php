@@ -13,20 +13,4 @@ return function (Container $container) {
         Database::class,
         fn($c) => new Database(require(base_path('config/database.php'))),
     );
-    $container->set(
-        NotesController::class,
-        fn($c) => new NotesController($c->get(Database::class)),
-    );
-    $container->set(
-        PagesController::class,
-        fn($c) => new PagesController($c->get(Database::class)),
-    );
-    $container->set(
-        RegisteredUserController::class,
-        fn($c) => new RegisteredUserController($c->get(Database::class)),
-    );
-    $container->set(
-        SessionsController::class,
-        fn($c) => new SessionsController($c->get(Database::class)),
-    );
 };
