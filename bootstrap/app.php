@@ -8,6 +8,8 @@ autoload_register([
     'Core\\' => 'core/',
 ]);
 
+session_start();
+
 use Core\Application;
 
 return new Application(

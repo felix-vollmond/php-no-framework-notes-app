@@ -1,6 +1,7 @@
 <?php
 
 use App\Controllers\Auth\RegisteredUserController;
+use App\Controllers\Auth\SessionsController;
 use App\Controllers\NotesController;
 use App\Controllers\PagesController;
 
@@ -20,4 +21,8 @@ return function (Router $router) {
 
     $router->get('/register', [RegisteredUserController::class, 'create']);
     $router->post('/register', [RegisteredUserController::class, 'store']);
+
+    $router->get('/login', [SessionsController::class, 'create']);
+    $router->post('/login', [SessionsController::class, 'store']);
+    $router->delete('/logout', [SessionsController::class, 'destroy']);
 };
