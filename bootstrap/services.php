@@ -1,6 +1,10 @@
 <?php
 
-use App\Controllers\{AuthController, NotesController, PagesController};
+use App\Controllers\{
+    Auth\RegisteredUserController,
+    NotesController,
+    PagesController,
+};
 
 use Core\Container;
 use Core\Database;
@@ -26,7 +30,7 @@ return function (Container $container) {
         ),
     );
     $container->set(
-        AuthController::class,
-        fn($c) => new AuthController($c->get(Database::class)),
+        RegisteredUserController::class,
+        fn($c) => new RegisteredUserController($c->get(Database::class)),
     );
 };

@@ -1,6 +1,6 @@
 <?php
 
-use App\Controllers\AuthController;
+use App\Controllers\Auth\RegisteredUserController;
 use App\Controllers\NotesController;
 use App\Controllers\PagesController;
 
@@ -18,6 +18,6 @@ return function (Router $router) {
     $router->patch('/notes/{id}', [NotesController::class, 'update']);
     $router->delete('/notes/{id}', [NotesController::class, 'destroy']);
 
-    $router->get('/register', [AuthController::class, 'showRegisterForm']);
-    $router->post('/register', [AuthController::class, 'register']);
+    $router->get('/register', [RegisteredUserController::class, 'create']);
+    $router->post('/register', [RegisteredUserController::class, 'store']);
 };

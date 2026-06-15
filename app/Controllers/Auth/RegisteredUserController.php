@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Auth;
 
 use Core\Database;
 
-class AuthController
+class RegisteredUserController
 {
     public function __construct(private Database $db) {}
 
-    public function showRegisterForm()
+    public function create()
     {
         view('auth.register');
     }
 
-    public function register()
+    public function store()
     {
         $email = $_POST['email'] ?? '';
         $password = $_POST['password'] ?? '';
