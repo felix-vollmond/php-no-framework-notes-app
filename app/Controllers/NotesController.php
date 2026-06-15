@@ -8,14 +8,13 @@ class NotesController
 {
     public function __construct(
         private Database $db,
-        private int $userId,
     ) {}
 
     public function index()
     {
         $notes = $this->db->query(
             'SELECT * FROM notes WHERE user_id = ?',
-            [$this->userId],
+            [$_SESSION['user']['id']],
         )->all();
 
         view('notes.index', ['notes' => $notes]);
@@ -27,7 +26,7 @@ class NotesController
 
         $note = $this->db->query($query, [
             ':noteId' => $id,
-            ':userId' => $this->userId,
+            ':userId' => $_SESSION['user']['id'],
         ])->findOrFail();
 
         view('notes.show', ['note' => $note]);
@@ -39,7 +38,7 @@ class NotesController
 
         $note = $this->db->query($query, [
             ':noteId' => $id,
-            ':userId' => $this->userId,
+            ':userId' => $_SESSION['user']['id'],
         ])->findOrFail();
 
         view('notes.edit', ['note' => $note]);
@@ -59,7 +58,7 @@ class NotesController
         $this->db->query($query, [
             ':noteBody' => $noteBody,
             ':noteId' => $id,
-            ':userId' => $this->userId,
+            ':userId' => $_SESSION['user']['id'],
         ]);
 
         redirect("/notes/{$id}");
@@ -73,7 +72,7 @@ class NotesController
 
         $this->db->query($query, [
             ':noteBody' => $noteBody,
-            ':userId' => $this->userId,
+            ':userId' => $_SESSION['user']['id'],
         ]);
 
         redirect('/notes');
@@ -85,7 +84,7 @@ class NotesController
 
         $this->db->query($query, [
             ':noteId' => $id,
-            ':userId' => $this->userId,
+            ':userId' => $_SESSION['user']['id'],
         ]);
 
         redirect('/notes');
