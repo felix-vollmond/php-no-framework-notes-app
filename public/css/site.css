@@ -26,9 +26,23 @@ ul {
   font-weight: 700;
 }
 
-.navbar {
+.banner {
   background-color: #333;
   padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.banner-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.banner-right form {
+    display: flex;
+    margin: 0;
 }
 
 .navbar-list {
@@ -53,6 +67,16 @@ ul {
 
 .navbar-link:hover {
   background-color: #222;
+}
+
+.account-btn {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  font-weight: 300;
+  font-family: 'Commissioner', sans-serif;
+  padding: 8px 5px;
+  cursor: pointer;
 }
 
 .notes-list {
