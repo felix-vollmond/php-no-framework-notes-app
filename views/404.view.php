@@ -1,5 +1,5 @@
 <?php partial('head', ['title' => 'Not Found']); ?>
-<?php partial('nav'); ?>
+<?php partial('banner'); ?>
 
 <main class="content">
     <h1 class="content-title">404 Not Found</h1>

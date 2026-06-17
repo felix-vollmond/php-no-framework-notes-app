@@ -1,5 +1,5 @@
 <?php partial('head', ['title' => 'Notes']); ?>
-<?php partial('nav'); ?>
+<?php partial('banner'); ?>
 
 <main class="content">
     <h1 class="content-title">Notes</h1>
