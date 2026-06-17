@@ -1,3 +1,7 @@
+<?php
+    /** @var string $user */
+?>
+
 <?php partial('head', ['title' => 'Notes App']); ?>
 <?php partial('banner'); ?>
 

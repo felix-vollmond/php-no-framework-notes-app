@@ -1,3 +1,7 @@
+<?php
+    /** @var array $note */
+?>
+
 <?php partial('head', ['title' => 'Edit Note']); ?>
 <?php partial('banner'); ?>
 
