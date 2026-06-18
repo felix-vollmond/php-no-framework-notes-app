@@ -1,9 +1,11 @@
 <?php
 
+require dirname(__DIR__) . '/core/Autoloader.php';
 require dirname(__DIR__) . '/core/helpers.php';
-require dirname(__DIR__) . '/core/autoload.php';
 
-autoload_register([
+use Core\Autoloader;
+
+Autoloader::register([
     'App\\' => 'app/',
     'Core\\' => 'core/',
 ]);
