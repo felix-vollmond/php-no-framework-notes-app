@@ -1,14 +1,6 @@
 <?php
 
-require dirname(__DIR__) . '/core/Autoloader.php';
-require dirname(__DIR__) . '/core/helpers.php';
-
-use Core\Autoloader;
-
-Autoloader::register([
-    'App\\' => 'app/',
-    'Core\\' => 'core/',
-]);
+require dirname(__DIR__) . '/core/autoload.php';
 
 session_start();
 
