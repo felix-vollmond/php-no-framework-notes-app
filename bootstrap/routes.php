@@ -11,18 +11,18 @@ return function (Router $router) {
     $router->get('/', [PagesController::class, 'index']);
     $router->get('/about', [PagesController::class, 'about']);
 
-    $router->get('/notes', [NotesController::class, 'index']);
-    $router->get('/notes/create', [NotesController::class, 'create']);
-    $router->get('/notes/{id}', [NotesController::class, 'show']);
-    $router->get('/notes/{id}/edit', [NotesController::class, 'edit']);
-    $router->post('/notes', [NotesController::class, 'store']);
-    $router->patch('/notes/{id}', [NotesController::class, 'update']);
-    $router->delete('/notes/{id}', [NotesController::class, 'destroy']);
+    $router->get('/notes', [NotesController::class, 'index'])->only('auth');
+    $router->get('/notes/create', [NotesController::class, 'create'])->only('auth');
+    $router->get('/notes/{id}', [NotesController::class, 'show'])->only('auth');
+    $router->get('/notes/{id}/edit', [NotesController::class, 'edit'])->only('auth');
+    $router->post('/notes', [NotesController::class, 'store'])->only('auth');
+    $router->patch('/notes/{id}', [NotesController::class, 'update'])->only('auth');
+    $router->delete('/notes/{id}', [NotesController::class, 'destroy'])->only('auth');
 
-    $router->get('/register', [RegisteredUserController::class, 'create']);
-    $router->post('/register', [RegisteredUserController::class, 'store']);
+    $router->get('/register', [RegisteredUserController::class, 'create'])->only('guest');
+    $router->post('/register', [RegisteredUserController::class, 'store'])->only('guest');
 
-    $router->get('/login', [SessionsController::class, 'create']);
-    $router->post('/login', [SessionsController::class, 'store']);
-    $router->delete('/logout', [SessionsController::class, 'destroy']);
+    $router->get('/login', [SessionsController::class, 'create'])->only('guest');
+    $router->post('/login', [SessionsController::class, 'store'])->only('guest');
+    $router->delete('/logout', [SessionsController::class, 'destroy'])->only('auth');
 };
