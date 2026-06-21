@@ -14,27 +14,29 @@ class Router
 
     private function add($method, $uri, $controller)
     {
-        $this->routes[] = new Route($method, $uri, $controller);
+        $this->routes[] = $route = new Route($method, $uri, $controller);
+
+        return $route;
     }
 
     public function get($uri, $controller)
     {
-        $this->add('GET', $uri, $controller);
+        return $this->add('GET', $uri, $controller);
     }
 
     public function post($uri, $controller)
     {
-        $this->add('POST', $uri, $controller);
+        return $this->add('POST', $uri, $controller);
     }
 
     public function patch($uri, $controller)
     {
-        $this->add('PATCH', $uri, $controller);
+        return $this->add('PATCH', $uri, $controller);
     }
 
     public function delete($uri, $controller)
     {
-        $this->add('DELETE', $uri, $controller);
+        return $this->add('DELETE', $uri, $controller);
     }
 
     public function dispatch($method, $uri)
