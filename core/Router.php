@@ -48,9 +48,11 @@ class Router
 
             $params = $uriMatcher->match($route->uri);
 
-            if ($params !== false) {
-                return $this->dispatcher->dispatch($route->action, $params);
-            }
+            if ($params === false) continue;
+
+            $route->middleware?->handle();
+
+            return $this->dispatcher->dispatch($route->action, $params);
         }
 
         abort();
