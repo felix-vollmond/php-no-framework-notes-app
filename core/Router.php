@@ -3,6 +3,7 @@
 namespace Core;
 
 use Core\ControllerDispatcher;
+use Core\Route;
 use Core\RouteMatcher;
 
 class Router
@@ -13,7 +14,7 @@ class Router
 
     private function add($method, $uri, $controller)
     {
-        $this->routes[$method][$uri] = $controller;
+        $this->routes[] = new Route($method, $uri, $controller);
     }
 
     public function get($uri, $controller)
@@ -40,11 +41,13 @@ class Router
     {
         $uriMatcher = new RouteMatcher($uri);
 
-        foreach ($this->routes[$method] ?? [] as $pattern => $route) {
-            $params = $uriMatcher->match($pattern);
+        foreach ($this->routes as $route) {
+            if ($route->method !== $method) continue;
+
+            $params = $uriMatcher->match($route->uri);
 
             if ($params !== false) {
-                return $this->dispatcher->dispatch($route, $params);
+                return $this->dispatcher->dispatch($route->action, $params);
             }
         }
 
