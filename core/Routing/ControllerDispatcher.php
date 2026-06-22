@@ -1,8 +1,8 @@
 <?php
 
-namespace Core;
+namespace Core\Routing;
 
-use Core\Container;
+use Core\Container\Container;
 
 use Exception;
 use ReflectionFunction;

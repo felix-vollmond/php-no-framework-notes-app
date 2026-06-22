@@ -1,8 +1,8 @@
 <?php
 
-require __DIR__ . '/Autoloader.php';
+require __DIR__ . '/Bootstrap/Autoloader.php';
 
-\Core\Autoloader::register((static function () {
+\Core\Bootstrap\Autoloader::register((static function () {
     $bootstrapConfigPath = dirname(__DIR__) . '/bootstrap/autoload.php';
 
     $bootstrapConfig = file_exists($bootstrapConfigPath)

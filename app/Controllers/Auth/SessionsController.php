@@ -2,7 +2,7 @@
 
 namespace App\Controllers\Auth;
 
-use Core\Database;
+use Core\Database\Database;
 
 class SessionsController
 {

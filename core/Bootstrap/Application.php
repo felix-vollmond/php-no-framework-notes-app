@@ -1,11 +1,10 @@
 <?php
 
-namespace Core;
+namespace Core\Bootstrap;
 
-use Core\Container;
-use Core\ControllerDispatcher;
-use Core\Env;
-use Core\Router;
+use Core\Container\Container;
+use Core\Routing\ControllerDispatcher;
+use Core\Routing\Router;
 
 class Application
 {

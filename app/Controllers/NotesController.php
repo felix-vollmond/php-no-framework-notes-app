@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use Core\Database;
+use Core\Database\Database;
 
 class NotesController
 {

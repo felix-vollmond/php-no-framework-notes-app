@@ -5,7 +5,7 @@ use App\Controllers\Auth\SessionsController;
 use App\Controllers\NotesController;
 use App\Controllers\PagesController;
 
-use Core\Router;
+use Core\Routing\Router;
 
 return function (Router $router) {
     $router->get('/', [PagesController::class, 'index']);

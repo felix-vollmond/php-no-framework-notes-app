@@ -1,10 +1,10 @@
 <?php
 
+use Core\Bootstrap\Application;
+
 require dirname(__DIR__) . '/core/autoload.php';
 
 session_start();
-
-use Core\Application;
 
 return new Application(
     services: require base_path('bootstrap/services.php'),

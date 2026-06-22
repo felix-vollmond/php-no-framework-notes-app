@@ -1,8 +1,6 @@
 <?php
 
-namespace Core;
-
-use Core\Middleware;
+namespace Core\Middleware;
 
 class Auth implements Middleware
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Core;
+namespace Core\Routing;
 
-use Core\Middleware;
+use Core\Middleware\Middleware;
 use Exception;
 
 class Route

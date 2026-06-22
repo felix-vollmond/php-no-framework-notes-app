@@ -1,10 +1,6 @@
 <?php
 
-namespace Core;
-
-use Core\ControllerDispatcher;
-use Core\Route;
-use Core\RouteMatcher;
+namespace Core\Routing;
 
 class Router
 {

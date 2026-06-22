@@ -1,9 +1,6 @@
 <?php
 
-namespace Core;
-
-use Core\Auth;
-use Core\Guest;
+namespace Core\Middleware;
 
 interface Middleware
 {

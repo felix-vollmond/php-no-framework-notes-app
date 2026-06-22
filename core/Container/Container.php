@@ -1,8 +1,7 @@
 <?php
 
-namespace Core;
+namespace Core\Container;
 
-use Exception;
 use ReflectionClass;
 
 class Container
