@@ -4,10 +4,13 @@ namespace Core\Middleware;
 
 interface Middleware
 {
-    public const MAP = [
+    /**
+     * @var array<string, class-string>
+     */
+    public const array MAP = [
         'auth' => Auth::class,
         'guest' => Guest::class,
     ];
 
-    public function handle();
+    public function handle(): void;
 }

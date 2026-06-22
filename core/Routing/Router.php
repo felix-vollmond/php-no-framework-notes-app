@@ -4,38 +4,54 @@ namespace Core\Routing;
 
 class Router
 {
-    private $routes = [];
+    /** @var Route[] */
+    private array $routes = [];
 
     public function __construct(private ControllerDispatcher $dispatcher) {}
 
-    private function add($method, $uri, $controller)
+    /**
+     * @param  callable|array{class-string, string}  $controller
+     */
+    private function add(string $method, string $uri, mixed $controller): Route
     {
         $this->routes[] = $route = new Route($method, $uri, $controller);
 
         return $route;
     }
 
-    public function get($uri, $controller)
+    /**
+     * @param  callable|array{class-string, string}  $controller
+     */
+    public function get(string $uri, mixed $controller): Route
     {
         return $this->add('GET', $uri, $controller);
     }
 
-    public function post($uri, $controller)
+    /**
+     * @param  callable|array{class-string, string}  $controller
+     */
+    public function post(string $uri, mixed $controller): Route
     {
         return $this->add('POST', $uri, $controller);
     }
 
-    public function patch($uri, $controller)
+    /**
+     * @param  callable|array{class-string, string}  $controller
+     */
+    public function patch(string $uri, mixed $controller): Route
     {
         return $this->add('PATCH', $uri, $controller);
     }
 
-    public function delete($uri, $controller)
+    /**
+     * @param  callable|array{class-string, string}  $controller
+     */
+    public function delete(string $uri, mixed $controller): Route
     {
         return $this->add('DELETE', $uri, $controller);
     }
 
-    public function dispatch($method, $uri)
+    public function dispatch(string $method, string $uri): mixed
     {
         $uriMatcher = new RouteMatcher($uri);
 

@@ -12,7 +12,13 @@ class ControllerDispatcher
 {
     public function __construct(private Container $container) {}
 
-    public function dispatch($route, $params)
+    /**
+     * @param  callable|array{class-string, string}  $route
+     * @param  array<string, mixed>  $params
+     *
+     * @throws Exception
+     */
+    public function dispatch(mixed $route, array $params): mixed
     {
         if (is_callable($route)) {
             $this->invoke($route, $params);
@@ -34,7 +40,13 @@ class ControllerDispatcher
     }
 
     // I could have made it static, but I didn't.
-    private function invoke($callable, $params)
+    /**
+     * @param  callable|array{class-string, string}  $callable
+     * @param  array<string, mixed>  $params
+     *
+     * @throws Exception
+     */
+    private function invoke(mixed $callable, array $params): mixed
     {
         if (is_array($callable) && count($callable) === 2) {
             $reflection = new ReflectionMethod($callable[0], $callable[1]);

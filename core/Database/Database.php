@@ -15,7 +15,10 @@ class Database
     private PDO $pdo;
     private PDOStatement $statement;
 
-    public function __construct($config)
+    /**
+     * @param  array<string, string>  $config
+     */
+    public function __construct(array $config)
     {
         $this->pdo = new PDO(
             self::buildDsn($config),
@@ -25,7 +28,10 @@ class Database
         );
     }
 
-    public function query($query, $params = [])
+    /**
+     * @param  array<int|string, mixed>  $params
+     */
+    public function query(string $query, array $params = []): self
     {
         $this->statement = $this->pdo->prepare($query);
         $this->statement->execute($params);
@@ -33,17 +39,26 @@ class Database
         return $this;
     }
 
-    public function find()
+    /**
+     * @return array<string, mixed>|false
+     */
+    public function find(): array|false
     {
         return $this->statement->fetch();
     }
 
-    public function all()
+    /**
+     * @return list<array<string, mixed>>
+     */
+    public function all(): array
     {
         return $this->statement->fetchAll();
     }
 
-    public function findOrFail()
+    /**
+     * @return array<string, mixed>
+     */
+    public function findOrFail(): array
     {
         $result = $this->find();
 
@@ -54,7 +69,15 @@ class Database
         return $result;
     }
 
-    private static function buildDsn($config)
+    /**
+     * @param  array{
+     *     host: string,
+     *     port: string,
+     *     name: string,
+     *     charset: string
+     * }  $config
+     */
+    private static function buildDsn(array $config): string
     {
         return sprintf(
             'mysql:host=%s;port=%s;dbname=%s;charset=%s',
@@ -65,7 +88,10 @@ class Database
         );
     }
 
-    private static function pdoOptions()
+    /**
+     * @return array<int, mixed>
+     */
+    private static function pdoOptions(): array
     {
         return [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,

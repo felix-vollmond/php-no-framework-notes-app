@@ -11,6 +11,10 @@ class Application
     private Container $container;
     private Router $router;
 
+    /**
+     * @param  callable(Container): void  $services
+     * @param  callable(Router): void  $routes
+     */
     public function __construct(
         callable $services,
         callable $routes,
@@ -25,7 +29,7 @@ class Application
         $this->register($services, $routes);
     }
 
-    public function handleRequest()
+    public function handleRequest(): mixed
     {
         $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
         $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
@@ -38,7 +42,7 @@ class Application
         return $this->container;
     }
 
-    private function registerCoreServices()
+    private function registerCoreServices(): void
     {
         $this->container->set(
             ControllerDispatcher::class,
@@ -50,10 +54,14 @@ class Application
         );
     }
 
+    /**
+     * @param  callable(Container): void  $registerServices
+     * @param  callable(Router): void  $registerRoutes
+     */
     private function register(
         callable $registerServices,
         callable $registerRoutes,
-    ) {
+    ): void {
         $registerServices($this->container);
         $registerRoutes($this->router);
     }

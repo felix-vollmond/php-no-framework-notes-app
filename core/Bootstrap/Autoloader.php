@@ -4,7 +4,10 @@ namespace Core\Bootstrap;
 
 class Autoloader
 {
-    public static function register($mappings)
+    /**
+     * @param  array<string, string>  $mappings
+     */
+    public static function register(array $mappings): void
     {
         spl_autoload_register(function ($class) use ($mappings) {
             foreach ($mappings as $namespace => $folder) {

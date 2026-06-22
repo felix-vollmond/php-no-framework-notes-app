@@ -4,16 +4,19 @@ namespace Core\Bootstrap;
 
 use RuntimeException;
 
+/*
+    A temporary implementation of reading secrets from .env
+
+    It does not support quoted values, comments after a key-value pair
+    and a lot of things yet. It also does not check if the key is a valid
+    identifier. But it meets our needs perfectly! ^-^
+*/
 class Env
 {
-    /*
-        A temporary implementation of reading secrets from .env
-
-        It does not support quoted values, comments after a key-value pair
-        and a lot of things yet. It also does not check if the key is a valid
-        identifier. But it meets our needs perfectly! ^-^
-    */
-    public static function load($path, $name = '.env')
+    /**
+     * @throws RuntimeException
+     */
+    public static function load(string $path, string $name = '.env'): void
     {
         $path .= "/{$name}";
         if (!is_readable($path)) {

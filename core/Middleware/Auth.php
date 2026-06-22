@@ -2,9 +2,12 @@
 
 namespace Core\Middleware;
 
+use Override;
+
 class Auth implements Middleware
 {
-    public function handle()
+    #[Override]
+    public function handle(): void
     {
         if (! isset($_SESSION['user'])) {
             redirect('/login');

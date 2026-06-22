@@ -9,12 +9,18 @@ class Route
 {
     public ?Middleware $middleware = null;
 
+    /**
+     * @param  callable|array{class-string, string}  $action
+     */
     public function __construct(
         public readonly string $method,
         public readonly string $uri,
         public readonly mixed $action,
     ) {}
 
+    /**
+     * @throws Exception
+     */
     public function only(string $middleware): static
     {
         if (! isset(Middleware::MAP[$middleware])) {

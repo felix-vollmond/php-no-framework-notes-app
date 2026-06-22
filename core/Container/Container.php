@@ -6,21 +6,28 @@ use ReflectionClass;
 
 class Container
 {
-    private $objects = [];
+    /** @var array<string, callable(self): object> */
+    private array $objects = [];
 
-    public function set($id, $callback)
+    /**
+     * @param  callable(self): object  $callback
+     */
+    public function set(string $id, callable $callback): void
     {
         $this->objects[$id] = $callback;
     }
 
-    public function get($id)
+    public function get(string $id): object
     {
         return isset($this->objects[$id])
             ? $this->objects[$id]($this)
             : $this->make($id);
     }
 
-    private function make($class)
+    /**
+     * @param  class-string  $class
+     */
+    private function make(string $class): ?object
     {
         if (!class_exists($class)) {
             return null;

@@ -4,14 +4,18 @@ namespace Core\Routing;
 
 class RouteMatcher
 {
-    private $uriParts;
+    /** @var string[] */
+    private array $uriParts;
 
-    public function __construct($uri)
+    public function __construct(string $uri)
     {
         $this->uriParts = static::split($uri);
     }
 
-    public function match($pattern)
+    /**
+     * @return array<string, string>|false
+     */
+    public function match(string $pattern): array|false
     {
         $patternParts = static::split($pattern);
 
@@ -35,12 +39,15 @@ class RouteMatcher
         return $params;
     }
 
-    private static function split($uri)
+    /**
+     * @return string[]
+     */
+    private static function split(string $uri): array
     {
         return explode('/', trim($uri, '/'));
     }
 
-    private static function isParam($value)
+    private static function isParam(string $value): bool
     {
         return str_starts_with($value, '{') && str_ends_with($value, '}');
     }
