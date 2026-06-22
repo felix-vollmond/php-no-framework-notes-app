@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Controllers\Auth\RegisteredUserController;
 use App\Controllers\Auth\SessionsController;
 use App\Controllers\NotesController;

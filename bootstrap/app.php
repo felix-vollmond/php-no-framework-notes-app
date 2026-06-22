@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Core\Bootstrap\Application;
 
 require dirname(__DIR__) . '/core/autoload.php';

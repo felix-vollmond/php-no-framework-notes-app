@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 // It is assumed that MySQL is used
 return [
     'host' => env('DB_HOST', '127.0.0.1'),

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 require __DIR__ . '/Bootstrap/Autoloader.php';
 
 \Core\Bootstrap\Autoloader::register((static function () {
