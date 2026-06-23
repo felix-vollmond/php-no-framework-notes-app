@@ -26,13 +26,13 @@ class ControllerDispatcher
             $this->invoke($route, $params);
         }
 
-        if (!is_array($route) || count($route) !== 2) {
+        if (! is_array($route) || count($route) !== 2) {
             abort();
         }
 
         [$class, $action] = $route;
 
-        if (!method_exists($class, $action)) {
+        if (! method_exists($class, $action)) {
             abort();
         }
 

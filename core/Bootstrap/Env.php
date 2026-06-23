@@ -21,7 +21,7 @@ class Env
     public static function load(string $path, string $name = '.env'): void
     {
         $path .= "/{$name}";
-        if (!is_readable($path)) {
+        if (! is_readable($path)) {
             throw new RuntimeException("{$path} is not readable");
         }
 

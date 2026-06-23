@@ -31,7 +31,7 @@ class Container
      */
     private function make(string $class): ?object
     {
-        if (!class_exists($class)) {
+        if (! class_exists($class)) {
             return null;
         }
 
