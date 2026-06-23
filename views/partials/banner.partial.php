@@ -1,7 +1,9 @@
 <?php
-    function active_if($uri)
-    {
-        return if_uri_is($uri, then: 'navbar-link-active');
+    if (! function_exists('active_if')) {
+        function active_if(string $uri): string
+        {
+            return if_uri_is($uri, then: 'navbar-link-active');
+        }
     }
 ?>
 
